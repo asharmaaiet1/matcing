@@ -1,23 +1,66 @@
-import logo from './logo.svg';
-import './App.css';
+import jQuery from 'jquery';
+import { useEffect } from 'react';
+import './App.scss';
 
 function App() {
+
+  useEffect(() => {
+    // jQuery('.list').draggable();
+  })
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app-container">
+      <h3>Match option(s) to corresponding option(s):</h3>
+      <h3>Drag and drop circle on the left to the corresponding circle n the right.</h3>
+
+      <div className="activity-container">
+        <div className="column-one">
+          <p>Column 1 Heading</p>
+          <div className="options-container">
+            <ul className="list">
+              <li>
+                Option 1
+              </li>
+              <li>
+                Option 2
+              </li>
+              <li>
+                Option 3
+              </li>
+              <li>
+                Option 4
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div className="column-two">
+          <p>Column 2 Heading</p>
+          <div className="options-container">
+          <ul className="list">
+              <li>
+                Option 1
+              </li>
+              <li>
+                Option 2
+              </li>
+              <li>
+                Option 3
+              </li>
+              <li>
+                Option 4
+              </li>
+              <li>
+                Option 1
+              </li>
+              <li>
+                Option 2
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div></div>
     </div>
   );
 }
