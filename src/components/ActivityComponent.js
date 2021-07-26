@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import './Activity.scss';
 import LinesContainer from '../containers/LinesContainer';
 
-function Activity(props) {
+const Activity = (props) => {
 
 	const [draggableOriginal, setDraggableOriginal] = useState(null);
 
@@ -11,12 +11,13 @@ function Activity(props) {
 		questionText,
 		questionSet,
 		setDrop,
-		setLine
+		setLine,
 	} = props;
 
 	// line x1 is fixed 128 and x2 is 415
 
 	useEffect(() => {
+
 		jQuery('.draggable-circle').draggable({
 			containment: '.activity-container',
 			helper: "clone",

@@ -1,4 +1,6 @@
-function Lines(props) {
+import { useEffect } from "react";
+
+const Lines = (props) => {
 
   const {
     linesArray
