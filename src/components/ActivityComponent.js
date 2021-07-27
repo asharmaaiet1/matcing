@@ -18,6 +18,14 @@ const Activity = (props) => {
 		answersSubmitted,
 		finalResult
 	} = props;
+	
+	const resetAll = () => {
+		const allDroppables = jQuery(".droppable-circle");
+		for(let i = 0; i<allDroppables.length; i+=1) {
+			allDroppables[i].classList.remove('dropped-pink');
+		}
+		resetActivity();
+	}
 
 	// line x1 is fixed 128 and x2 is 415
 
@@ -36,7 +44,7 @@ const Activity = (props) => {
 			tolerance: 'touch',
 			drop: function (event, ui) {
 				let droppedOn = this.getBoundingClientRect();
-				this.classList.add('dropped-pink')
+				this.classList.add('dropped-pink');
 				let draggedItem = ui.helper[0].parentElement.firstChild;
 				// console.log('droppedOn.data', this.nextSibling.data);
 				setDrop({'question': draggedItem.data, 'answer': this.nextSibling.data});
@@ -103,7 +111,7 @@ const Activity = (props) => {
 					) : null
 				}
 				<button className="button submit" disabled={!buttonState} onClick={validateResult}>Submit</button>
-				<button className="button reset" disabled={!buttonState} onClick={resetActivity}>Reset</button>
+				<button className="button reset" disabled={!buttonState} onClick={resetAll}>Reset</button>
 			</div>
 		</div>
 	);
