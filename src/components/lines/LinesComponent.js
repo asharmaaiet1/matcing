@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+// import { useEffect } from "react";
 
 const Lines = (props) => {
 
@@ -12,7 +12,7 @@ const Lines = (props) => {
         {
           linesArray.map((value, index) => {
             return (
-              <line key={`line${1}`} id="s2_t3" x1={value.x1} y1={value.y1} x2={value.x2} y2={value.y2} stroke="#000000" strokeWidth="3" />
+              <line key={`line${index}`} id="s2_t3" x1={value.x1} y1={value.y1} x2={value.x2} y2={value.y2} stroke="#000000" strokeWidth="3" />
             )
           })
         }

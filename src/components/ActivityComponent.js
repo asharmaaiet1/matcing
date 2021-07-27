@@ -12,6 +12,11 @@ const Activity = (props) => {
 		questionSet,
 		setDrop,
 		setLine,
+		validateResult,
+		resetActivity,
+		buttonState,
+		answersSubmitted,
+		finalResult
 	} = props;
 
 	// line x1 is fixed 128 and x2 is 415
@@ -22,29 +27,26 @@ const Activity = (props) => {
 			containment: '.activity-container',
 			helper: "clone",
 			drag: (event, ui) => {
-				// console.log('ui is ', ui.originalPosition);
 				setDraggableOriginal(ui.originalPosition)
-				let draggedItem = ui.helper[0].parentElement.firstChild;
+				// let draggedItem = ui.helper[0].parentElement.firstChild;
 			}
 		});
 
 		jQuery(".droppable-circle").droppable({
 			tolerance: 'touch',
 			drop: function (event, ui) {
-				// let droppableDroppedElement = this.id;
-				let droppedOn = this.nextSibling;
+				let droppedOn = this.getBoundingClientRect();
+				this.classList.add('dropped-pink')
 				let draggedItem = ui.helper[0].parentElement.firstChild;
-				setDrop({'question': draggedItem.data, 'answer': droppedOn.data});
-
-				// console.log('draggableOriginal', draggableOriginal)
+				// console.log('droppedOn.data', this.nextSibling.data);
+				setDrop({'question': draggedItem.data, 'answer': this.nextSibling.data});
 				let lineCoordinates = {
 					x1: draggableOriginal.left+26,
 					y1: draggableOriginal.top+12,
 					x2: 415,
-					y2: 255,
+					y2: droppedOn.top - 107,
 				}
 				setLine(lineCoordinates);
-				// console.log('dropped', {'question': draggedItem.data, 'answer': droppedOn});
 			}
 		});
 	})
@@ -91,6 +93,17 @@ const Activity = (props) => {
 						</ul>
 					</div>
 				</div>
+				{
+					answersSubmitted ? (
+						finalResult ? (
+							<div className="result correct">Correct</div>
+						) : (
+							<div className="result incorrect">Correct</div>
+						)
+					) : null
+				}
+				<button className="button submit" disabled={!buttonState} onClick={validateResult}>Submit</button>
+				<button className="button reset" disabled={!buttonState} onClick={resetActivity}>Reset</button>
 			</div>
 		</div>
 	);

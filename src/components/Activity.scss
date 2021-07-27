@@ -1,60 +1,85 @@
 .app-container {
+  width: 750px;
+  height: 500px;
+  border: 2px solid skyblue;
+  .activity-container {
+    position: absolute;
     width: 750px;
-    height: 500px;
-    border: 2px solid skyblue;
-    .activity-container {
-      position: absolute;
-      width: 750px;
-      height: calc(100% - 230px);
+    height: calc(100% - 230px);
+    display: flex;
+    flex-direction: row;
+    .column-one {
+      flex-basis: 50%;
+      height: 350px;
+      z-index: 2;
+    }
+    .column-two {
+      flex-basis: 50%;
+      height: 350px;
+      z-index: 2;
+    }
+
+    .options-container {
+      height: 300px;
       display: flex;
-      flex-direction: row;
-      .column-one {
-        flex-basis: 50%;
-        height: 350px;
-        z-index: 2;
-      }
-      .column-two {
-        flex-basis: 50%;
-        height: 350px;
-        z-index: 2;
-      }
-  
-      .options-container {
-        height: 300px;
+      align-items: center;
+      z-index: 1;
+      .list {
+        list-style-type: none;
         display: flex;
-        align-items: center;
-        z-index: 1;
-        .list {
-          list-style-type: none;
+        flex-direction: column;
+        li {
+          margin-bottom: 20px;
           display: flex;
-          flex-direction: column;
-          li {
-            margin-bottom: 20px;
-            display: flex;
-            flex-direction: row;
-          }
-
-          .draggable-circle {
-              height: 15px;
-              width: 15px;
-              background-color: lightpink;
-              border-radius: 50%;
-              margin-top: 3px;
-              margin-left: 10px;
-              border: 1px solid gray;
-          }
-
-
-          .droppable-circle {
-            height: 15px;
-            width: 15px;
-            // background-color: lightpink;
-            border-radius: 50%;
-            margin-top: 3px;
-            margin-right: 10px;
-            border: 1px solid gray;
+          flex-direction: row;
         }
+
+        .draggable-circle {
+          height: 15px;
+          width: 15px;
+          background-color: lightpink;
+          border-radius: 50%;
+          margin-top: 3px;
+          margin-left: 10px;
+          border: 1px solid gray;
+        }
+
+        .droppable-circle {
+          height: 15px;
+          width: 15px;
+          // background-color: lightpink;
+          border-radius: 50%;
+          margin-top: 3px;
+          margin-right: 10px;
+          border: 1px solid gray;
+          &.dropped-pink {
+            background-color: lightpink;
+          }
         }
       }
     }
+    .result {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      font-weight: bold;
+      &.correct {
+        color: green;
+      }
+      &.incorrect {
+        color: red;
+      }
+    }
+    .button {
+      position: absolute;
+      bottom: 10px;
+      height: 28px;
+      &.submit {
+        right: 10px;
+      }
+      &.reset {
+        right: 80px;
+      }
+    }
   }
+}
